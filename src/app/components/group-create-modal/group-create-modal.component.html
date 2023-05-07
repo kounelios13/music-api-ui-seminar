@@ -1,0 +1,26 @@
+<form [formGroup]="form" (submit)="handlePayload()">
+    <mat-form-field>
+        <mat-label>Group Name</mat-label>
+        <input matInput formControlName="groupName" />
+        <mat-error *ngIf="form.get('groupName')?.invalid">Group name is required.</mat-error>
+    </mat-form-field>
+    <hr />
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="form.get('description')?.invalid">Description is required.</mat-error>
+    </mat-form-field>
+    <hr />
+
+    <mat-form-field>
+      <mat-label>Genre ID</mat-label>
+      <mat-select matInput formControlName="groupGenreID">
+        <!-- <mat-option *ngFor="let genreId of genreIds" [value]="genreId">{{genreId}}</mat-option> -->
+        <mat-option *ngFor="let item of genres" [value]="item.id">
+            {{item.genreName}}
+        </mat-option>
+    </mat-select>
+    </mat-form-field>
+    <button mat-button color="primary" type="submit">{{buttonTitleSuffix}} group</button>
+    <button mat-button type="reset">Clear</button>
+</form>

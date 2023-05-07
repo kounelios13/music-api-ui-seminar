@@ -1,0 +1,22 @@
+<table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let genre"> {{genre.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="genreName">
+        <th mat-header-cell *matHeaderCellDef> Genre Name </th>
+        <td mat-cell *matCellDef="let genre"> {{genre.genreName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let row">
+            <button mat-button (click)="this.openEditDialog(row.id , row)">Edit</button>
+            <button mat-raised-button  color="warn" (click)="openDialog(row.id)">Delete</button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>
+<button mat-button (click)="this.openCreateDialog()">Add new genre</button>

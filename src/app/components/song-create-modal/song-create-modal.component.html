@@ -1,0 +1,17 @@
+<form [formGroup]="form" (submit)="handlePayload()">
+    <mat-form-field>
+        <mat-label>Song Name</mat-label>
+        <input matInput type="text" formControlName="songName"/>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Song URL</mat-label>
+        <input matInput type="text" formControlName="songURL"/>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Group</mat-label>
+        <mat-select formControlName="groupId">
+            <mat-option *ngFor="let group of groups" [value]="group.id">{{ group.groupName }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button type="submit" mat-button color="primary">{{buttonSuffix}} song</button>
+</form>

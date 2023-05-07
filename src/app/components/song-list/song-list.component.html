@@ -1,0 +1,33 @@
+<table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let song"> {{song.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="songName">
+        <th mat-header-cell *matHeaderCellDef> Song Name </th>
+        <td mat-cell *matCellDef="let song"> {{song.songName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="songURL">
+        <th mat-header-cell *matHeaderCellDef> Url </th>
+        <td mat-cell *matCellDef="let song"> {{song.songURL}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="groupId">
+        <th mat-header-cell *matHeaderCellDef> Group ID </th>
+        <td mat-cell *matCellDef="let song"> {{song.groupId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let row">
+            <button mat-button (click)="this.openEditDialog(row.id , row)">Edit</button>
+            <button mat-raised-button color="warn" (click)="openDialog(row.id)">Delete</button>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+
+</table>
+<mat-paginator #paginator [pageSizeOptions]="[5, 10]"></mat-paginator>
+<button mat-button (click)="this.openCreateDialog()">Add new genre</button>
