@@ -1,4 +1,4 @@
-<form [formGroup]="form" (submit)="handlePayload()">
+<form [formGroup]="form" (submit)="submitForm()">
     <mat-form-field>
         <mat-label>Group Name</mat-label>
         <input matInput formControlName="groupName" />
@@ -22,5 +22,5 @@
     </mat-select>
     </mat-form-field>
     <button mat-button color="primary" type="submit">{{buttonTitleSuffix}} group</button>
-    <button mat-button type="reset">Clear</button>
+    <button mat-button [mat-dialog-close]="null">Cancel</button>
 </form>

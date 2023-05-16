@@ -16,7 +16,6 @@ export class GenreCreateModalComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<GenreCreateModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private genreService: GenreService,
     private fb: FormBuilder) {
     this.form = this.fb.group({
       genreName: new FormControl<string>('', Validators.required)

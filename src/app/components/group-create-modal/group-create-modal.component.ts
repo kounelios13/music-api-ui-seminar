@@ -28,7 +28,7 @@ export class GroupCreateModalComponent implements OnInit{
     this.form = this.fb.group({
       groupName: new FormControl<string>("", Validators.required),
       description: new FormControl<string>("", Validators.required),
-      groupGenreID: new FormControl<number>(-1, Validators.required)
+      groupGenreID: new FormControl<number | null>(null, Validators.required)
     });
   }
 
@@ -45,7 +45,7 @@ export class GroupCreateModalComponent implements OnInit{
       this.form.get('groupGenreID')?.setValue(group.groupGenreID);
     }
   }
-  handlePayload(): void {
+  submitForm(): void {
     if (this.form.valid) {
       this.dialogRef.close(this.form.value)
     }

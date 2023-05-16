@@ -7,4 +7,4 @@ RUN npm run build --prod
 
 # Second stage: serve the app using nginx
 FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist/music-ui/ /usr/share/nginx/html/
